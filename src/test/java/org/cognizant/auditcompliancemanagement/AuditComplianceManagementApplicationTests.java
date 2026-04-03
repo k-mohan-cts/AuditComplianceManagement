@@ -1,0 +1,13 @@
+package org.cognizant.auditcompliancemanagement;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class AuditComplianceManagementApplicationTests {
+
+    @Test
+    void contextLoads() {
+    }
+
+}
