@@ -24,7 +24,7 @@ public class Audit {
 //    @JoinColumn(name = "OfficerID", nullable = false)
 //    private User officer;
 
-    //private long officerId;
+    private Integer officerId;
 
     @Column(name = "Scope", nullable = false, length = 500)
     private String scope;

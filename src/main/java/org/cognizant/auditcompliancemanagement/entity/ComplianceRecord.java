@@ -38,7 +38,7 @@ public class ComplianceRecord {
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "OfficerID")
 //    private User officer;
-
+    private Integer officerId;
     @Column(name = "Notes", columnDefinition = "TEXT")
     private String notes;
 }
