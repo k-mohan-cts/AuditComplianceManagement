@@ -1,7 +1,7 @@
 package org.cognizant.auditcompliancemanagement.service;
 
 import org.cognizant.auditcompliancemanagement.Enum.AuditStatus;
-import org.cognizant.auditcompliancemanagement.child.UserInterface;
+import org.cognizant.auditcompliancemanagement.client.UserService;
 import org.cognizant.auditcompliancemanagement.dao.AuditRepository;
 import org.cognizant.auditcompliancemanagement.dto.request.AuditRequestDTO;
 import org.cognizant.auditcompliancemanagement.dto.request.UserRequestDTO;
@@ -21,11 +21,11 @@ public class AuditService {
     private AuditRepository auditRepository;
 
     @Autowired
-    private UserInterface userInterface; // Properly autowired
+    private UserService userService; // Properly autowired
 
     public AuditResponseDTO createAudit(AuditRequestDTO request) {
         // 1. Fetch Officer details from User Microservice
-        UserRequestDTO officer = userInterface.FetchUserById(request.getOfficerId());
+        UserRequestDTO officer = userService.FetchUserById(request.getOfficerId());
 
         // 2. Validation
         if (officer == null) {

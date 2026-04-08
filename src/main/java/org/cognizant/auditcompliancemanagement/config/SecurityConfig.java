@@ -43,7 +43,9 @@ public class SecurityConfig {
 //                        .requestMatchers("/api/users/getByUserId/{id}", "/api/users/getAllUsers", "/api/users/update/{id}", "/api/users/delete/{id}",
 //                                        "/api/citizens/getCitizenById/{id}", "/api/citizens/getAllCitizens", "/api/citizens/delete/{id}", "/api/documents/getDocById/{id}",
 //                                        "/api/incidents/**", "/api/shelters/**", "/api/recoveries/**", "/api/distributions/**").hasRole("MANAGER")
-                        .anyRequest().permitAll() // LOCK EVERYTHING ELSE
+                                //                        .requestMatchers("/api/audits/**", "/api/logs/**").hasAnyRole("AUDITOR","MANAGER","COMPLIANCE")
+                      .requestMatchers("/api/audits/**", "/api/logs/**").hasAnyRole("AUDITOR","MANAGER","COMPLIANCE")
+                                .anyRequest().permitAll() // LOCK EVERYTHING ELSE
                 )
 
                 .httpBasic(Customizer.withDefaults())

@@ -1,7 +1,7 @@
 package org.cognizant.auditcompliancemanagement.service;
 
 import org.cognizant.auditcompliancemanagement.Enum.ComplianceResult;
-import org.cognizant.auditcompliancemanagement.child.UserInterface;
+import org.cognizant.auditcompliancemanagement.client.UserService;
 import org.cognizant.auditcompliancemanagement.dao.ComplianceRecordRepository;
 import org.cognizant.auditcompliancemanagement.dto.request.ComplianceRecordRequestDTO;
 import org.cognizant.auditcompliancemanagement.dto.request.UserRequestDTO;
@@ -21,12 +21,12 @@ public class ComplianceRecordService {
     private ComplianceRecordRepository repository;
 
     @Autowired
-    private UserInterface userInterface; // The Feign Client
+    private UserService userService; // The Feign Client
 
     public ComplianceRecordResponseDTO createRecord(ComplianceRecordRequestDTO request) {
         // 1. Fetch and Validate Officer via Feign
         if (request.getOfficerId() != null) {
-            UserRequestDTO officer = userInterface.FetchUserById(request.getOfficerId());
+            UserRequestDTO officer = userService.FetchUserById(request.getOfficerId());
             if (officer == null) {
                 throw new RuntimeException("Compliance Officer not found with ID: " + request.getOfficerId());
             }
@@ -61,7 +61,7 @@ public class ComplianceRecordService {
 
         // 4. Update Officer (Verify via Feign if ID is provided)
         if (request.getOfficerId() != null) {
-            UserRequestDTO officer = userInterface.FetchUserById(request.getOfficerId());
+            UserRequestDTO officer = userService.FetchUserById(request.getOfficerId());
             if (officer == null) {
                 throw new RuntimeException("Officer not found with ID: " + request.getOfficerId());
             }
