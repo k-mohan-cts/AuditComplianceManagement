@@ -8,10 +8,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
-public class AuditComplianceManagementApplication {
+public class AuditServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AuditComplianceManagementApplication.class, args);
+        SpringApplication.run(AuditServiceApplication.class, args);
     }
 
 }
